@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Статистика - TG Messages Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="mb-4">📊 Статистика сообщений</h1>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Всего сообщений -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title text-primary">Всего сообщений</h5>
+                <h2 class="card-text">{{ total_messages }}</h2>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Каналы -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title text-info">Каналов</h5>
+                <h2 class="card-text">{{ channels_count }}</h2>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Чаты -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title text-success">Чатов</h5>
+                <h2 class="card-text">{{ chats_count }}</h2>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Обработано -->
+    <div class="col-md-6 col-lg-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title text-warning">Обработано</h5>
+                <h2 class="card-text">{{ processed_count }}</h2>
+                <small class="text-muted">из {{ total_messages }}</small>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">📈 Детальная статистика</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Необработанных сообщений:</strong> 
+                            <span class="badge bg-danger">{{ not_processed_count }}</span>
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Обработанных сообщений:</strong> 
+                            <span class="badge bg-success">{{ processed_count }}</span>
+                        </p>
+                    </div>
+                </div>
+                
+                {% if last_summary_date %}
+                <hr>
+                <p><strong>Последняя выжимка:</strong> 
+                    <span class="text-muted">{{ last_summary_date }}</span>
+                </p>
+                {% else %}
+                <hr>
+                <p class="text-muted"><em>Выжимки еще не создавались</em></p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">📋 Быстрые действия</h5>
+            </div>
+            <div class="card-body">
+                <a href="{{ url_for('messages') }}" class="btn btn-primary">Просмотреть все сообщения</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
