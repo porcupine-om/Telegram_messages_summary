@@ -1,4 +1,4 @@
-# Intensive GigaChat Telegram Project
+# Telegram messages summarizer - Project with Telebgam and GigaChat
 
 Проект для работы с Telegram через Telethon, генерации выжимок текста через GigaChat API и создания дашборда для просмотра статистики сообщений.
 
